@@ -1,0 +1,15 @@
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\bin\Debug\net6.0\Infraestructura.deps.json
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\bin\Debug\net6.0\Infraestructura.dll
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\bin\Debug\net6.0\ref\Infraestructura.dll
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\bin\Debug\net6.0\Infraestructura.pdb
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\bin\Debug\net6.0\Core.dll
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\bin\Debug\net6.0\Core.pdb
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.csproj.AssemblyReference.cache
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.GeneratedMSBuildEditorConfig.editorconfig
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.AssemblyInfoInputs.cache
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.AssemblyInfo.cs
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.csproj.CoreCompileInputs.cache
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.csproj.CopyComplete
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.dll
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\ref\Infraestructura.dll
+D:\BJMF\projectVS\WebAppGlobarTours\Infraestructura\obj\Debug\net6.0\Infraestructura.pdb
