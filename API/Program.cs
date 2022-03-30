@@ -1,3 +1,4 @@
+using Core.interfaces;
 using Infraestructura.Datos;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,10 +15,24 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-
+//Inyectamos el repositorio
+builder.Services.AddScoped<ILugarRepositorio, LugarRepositorio>();
 
 var app = builder.Build();
+
+//Aplicar las nuevas migraciones al ejecutar la aplicacion
+using(var scopre = app.Services.CreateScope()){
+    var services = scopre.ServiceProvider;
+    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+    try{
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        await context.Database.MigrateAsync();
+        await BaseDatosSeed.SeedAsync(context,loggerFactory);//ejecutamos la carga de datos
+    }catch(System.Exception ex){
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogError(ex, "Un error ocurrio durante la migracion");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

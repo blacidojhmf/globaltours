@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +9,27 @@ namespace Core.Entidades
 {
     public class Lugar
     {
-        public int id  {get;set;}
-        public string Nombre {get;set;}
+        [Key]
+        public int id { get; set; }
+        public string Nombre { get; set; }
+
+        public string Descripcion { get; set; }
+
+        public double GastoAproximado { get; set; }
+
+        public string ImagenUrl { get; set; }
+
+        //propiedades que hacen relacion conotras entidades
+        public int PaisId { get; set; }
+
+        [ForeignKey("PaisId")]
+        public Pais Pais { get; set; }
+
+
+        public int CategoriaId { get; set; }
+
+        [ForeignKey("CategoriaId")]
+        public Categoria Categoria { get; set; }
+
     }
 }
