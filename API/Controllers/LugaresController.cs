@@ -7,6 +7,9 @@ using Core.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Core.interfaces;
+using Core.Especificaciones;
+using AutoMapper;
+using API.Dtos;
 
 namespace API.Controllers
 {
@@ -14,24 +17,58 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class LugaresController : ControllerBase
     {
-        public ILugarRepositorio _repositorio;
+        //Esta referencia comentada es cuando se usa un repositorio identificado con una entidad
+        // public ILugarRepositorio _lugarRepo;
 
-        public LugaresController(ILugarRepositorio repo)
+        // public LugaresController(ILugarRepositorio repo)
+        // {
+        //     _lugarRepo = repo;
+        // }
+
+
+        //Ejemplo de uso de un repositorio Generico donde le mandamos la clase de entidad
+        public IRepositorio<Lugar> _lugarRepo;
+        public IRepositorio<Pais> _paisRepo { get; }
+        public IRepositorio<Categoria> _categoriaRepo { get; }
+        public IMapper _mapper { get; }
+
+        public LugaresController(IRepositorio<Lugar> lugarRepo, IRepositorio<Pais> paisRepo, IRepositorio<Categoria> categoriaRepo, IMapper mapper)
         {
-            _repositorio = repo;
+            _mapper = mapper;
+            _categoriaRepo = categoriaRepo;
+            _paisRepo = paisRepo;
+            _lugarRepo = lugarRepo;
+            
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Lugar>>> GetLugares(){
-            var lugares = await _repositorio.GetLugaresAsync();
-            return Ok(lugares);
+        public async Task<ActionResult<IReadOnlyList<LugarDto>>> GetLugares()// de Task<ActionResult<Lugar>> a Task<ActionResult<LugarDto>>
+        {
+            //Las especificaciones son los joins
+            var espec = new LugaresConPaisCategoriaEspecificacion();
+            var lugares = await _lugarRepo.ObtnerTodosEspecificacion(espec);
+            return Ok(_mapper.Map<IReadOnlyList<Lugar>, IReadOnlyList<LugarDto>>(lugares));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Lugar>> GetLugar(int id){
-            var lugar = await _repositorio.GetLugarAsync(id);
-            return lugar;
+        public async Task<ActionResult<LugarDto>> GetLugar(int id)// de Task<ActionResult<Lugar>> a Task<ActionResult<LugarDto>>
+        {
+            //LugaresConPaisCategoriaEspecificacion es el constructor que recibe un parametro
+            var espec = new LugaresConPaisCategoriaEspecificacion(id);
+            var lugar = await _lugarRepo.ObtenerEspecificacion(espec);
+            return _mapper.Map<Lugar,LugarDto>(lugar);
+          
         }
-        
+
+        [HttpGet("paises")]
+        public async Task<ActionResult<List<Pais>>> GetPaises(){
+            return Ok(await _paisRepo.ObtenerTodosAsync());
+        }
+
+        [HttpGet("categoria")]
+        public async Task<ActionResult<List<Categoria>>> GetCategoria(){
+            return Ok(await _categoriaRepo.ObtenerTodosAsync());
+        }
+
     }
 }

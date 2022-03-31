@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "k307hLIuo06zTN48D+18xDPU37GbEU+wezFpCq6lUPKwXqD2aB61TpzwpX0ssBh5RCkmjSs4ubptcvnXysgO6Q==",
+  "dgSpecHash": "E7rvyTBiGT2TCPm8DOiPrtHFz8Z4Uy1cMTY7eBEfK2OWfjC9BvPXoAJHeqxVY/dAef0gs+s5KREeCGyzWM+EeA==",
   "success": true,
   "projectFilePath": "D:\\BJMF\\projectVS\\WebAppGlobarTours\\API\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Blacidojhmf\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\Blacidojhmf\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Blacidojhmf\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Blacidojhmf\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Blacidojhmf\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
     "C:\\Users\\Blacidojhmf\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.3\\microsoft.entityframeworkcore.abstractions.6.0.3.nupkg.sha512",
     "C:\\Users\\Blacidojhmf\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.3\\microsoft.entityframeworkcore.analyzers.6.0.3.nupkg.sha512",

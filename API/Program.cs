@@ -1,22 +1,24 @@
+using API.Helper;
 using Core.interfaces;
 using Infraestructura.Datos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//Add services to the container.
 //agregar el servicio q permita conectar el dbcontext con la cadena de conexion agregado en appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefautConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)));
 
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Inyectamos el repositorio
 builder.Services.AddScoped<ILugarRepositorio, LugarRepositorio>();
+builder.Services.AddScoped(typeof(IRepositorio<>),(typeof(Repositorio<>)));//typeof por que no tiene un tipo de datos(entidad)
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 var app = builder.Build();
 
@@ -42,6 +44,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Manejar archivos estaticos para acceder a la carpeta de imagenes, Ref: Folder wwwroot y MappingProfiles
+
+app.UseStaticFiles();
 
 app.UseAuthorization();
 

@@ -32,6 +32,12 @@ namespace Infraestructura.Datos
 
         public async Task<IReadOnlyList<Lugar>> GetLugaresAsync()
         {
+            // var paisId = 1;
+            // var lugares = _db.Lugar.Where(p => p.Pais.Id == paisId)
+            //                         .Include(p => p.Pais)
+            //                         .Include(c => c.Categoria)
+            //                         .ToListAsync(); 
+
             var list = await _db.Lugar
             .Include(p => p.Pais)
             .Include(c => c.Categoria)
